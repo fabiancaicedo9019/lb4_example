@@ -9,7 +9,7 @@ steps:
     - '-c'
     - |
       version=$TAG_NAME
-      build -t gcr.io/co-corptalentum-gcp/lb4_example:${version/v/} .
+      build -t gcr.io/co-corptalentum-gcp/lb4_example:${version/v/ /g} .
   entrypoint: bash
   # [END cloudbuild_lb4_image_yaml]
 
