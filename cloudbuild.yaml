@@ -11,5 +11,5 @@ steps:
   # [START cloudbuild_lb4_push_yaml]
   # Docker push to Google Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push',  'gcr.io/co-corptalentum-gcp/lb4_example:${TAG_NAME}']
+    args: [ 'push',  'gcr.io/co-corptalentum-gcp/lb4_example:${TAG_NAME}' ]
   # [END cloudbuild_lb4_push_yaml]
