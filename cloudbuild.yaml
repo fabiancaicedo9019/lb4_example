@@ -1,0 +1,16 @@
+# [START cloudbuild_steps]
+steps:
+
+  # [START cloudbuild_lb4_image_yaml]
+  # Docker Build
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t',
+           'us-east1-docker.pkg.dev/${PROJECT_ID}/${_ARTIFACT_REGISTRY_REPO}/lb4_example:${TAG_NAME/v/}', '.']
+  # [END cloudbuild_lb4_image_yaml]
+
+
+  # [START cloudbuild_lb4_push_yaml]
+  # Docker push to Google Artifact Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push',  'us-east1-docker.pkg.dev/${PROJECT_ID}/${_ARTIFACT_REGISTRY_REPO}/myimage:${TAG_NAME/v/}']
+  # [END cloudbuild_lb4_push_yaml]
