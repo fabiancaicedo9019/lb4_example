@@ -7,8 +7,8 @@ steps:
 #    args: [ 'build', '-t', 'gcr.io/co-corptalentum-gcp/lb4_example:${TAG_NAME}', '.' ]
     args:
     - '-c'
-    - |
-      version=$TAG_NAME
+    - |-
+      version=$TAG_NAME \
       docker build -t gcr.io/co-corptalentum-gcp/lb4_example:${version//./-} .
     entrypoint: 'bash'
   # [END cloudbuild_lb4_image_yaml]
