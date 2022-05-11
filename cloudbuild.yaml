@@ -4,7 +4,13 @@ steps:
   # [START cloudbuild_lb4_image_yaml]
   # Docker Build
   - name: 'gcr.io/cloud-builders/docker'
-    args: [ 'build', '-t', 'gcr.io/co-corptalentum-gcp/lb4_example:${TAG_NAME}', '.' ]
+  #  args: [ 'build', '-t', 'gcr.io/co-corptalentum-gcp/lb4_example:${TAG_NAME}', '.' ]
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |-
+    version=$TAG_NAME
+    build -t gcr.io/co-corptalentum-gcp/lb4_example:${version//./-}
   # [END cloudbuild_lb4_image_yaml]
 
 
