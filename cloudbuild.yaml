@@ -4,18 +4,12 @@ steps:
   # [START cloudbuild_lb4_image_yaml]
   # Docker Build
   - name: 'gcr.io/cloud-builders/docker'
-  #  args: [ 'build', '-t', 'gcr.io/co-corptalentum-gcp/lb4_example:${TAG_NAME}', '.' ]
-    args:
-    - '-c'
-    - |
-      version=$TAG_NAME \
-      build -t gcr.io/co-corptalentum-gcp/lb4_example:${version//./-} .
-    entrypoint: 'bash'
+    args: [ 'build', '-t', 'gcr.io/co-corptalentum-gcp/lb4_example:${TAG_NAME}', '.' ]
   # [END cloudbuild_lb4_image_yaml]
 
 
   # [START cloudbuild_lb4_push_yaml]
   # Docker push to Google Artifact Registry
-  #- name: 'gcr.io/cloud-builders/docker'
-  #  args: [ 'push',  'gcr.io/co-corptalentum-gcp/lb4_example:${TAG_NAME}' ]
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [ 'push',  'gcr.io/co-corptalentum-gcp/lb4_example:${TAG_NAME}' ]
   # [END cloudbuild_lb4_push_yaml]
