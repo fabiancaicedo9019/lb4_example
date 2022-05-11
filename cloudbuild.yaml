@@ -1,6 +1,15 @@
 # [START cloudbuild_steps]
 steps:
 
+
+  - name: 'gcr.io/cloud-builders/gcloud'
+    entrypoint: "bash"
+    args:
+      - "-c"
+      - |
+          echo "enter 1 bash command per line"
+          ls -la
+
   # [START cloudbuild_lb4_image_yaml]
   # Docker Build
   - name: 'gcr.io/cloud-builders/docker'
