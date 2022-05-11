@@ -1,23 +1,19 @@
 # [START cloudbuild_steps]
 steps:
 
-
-  - name: 'gcr.io/cloud-builders/gcloud'
-    entrypoint: "bash"
-    args:
-      - "-c"
-      - |
-          echo "enter 1 bash command per line"
-          ls -la
-
   # [START cloudbuild_lb4_image_yaml]
   # Docker Build
   - name: 'gcr.io/cloud-builders/docker'
-    args: [ 'build', '-t', 'gcr.io/co-corptalentum-gcp/lb4_example:${TAG_NAME:1}', '.' ]
+    args: [ 'build', '-t', 'gcr.io/co-corptalentum-gcp/lb4_example:${_MY_TAG}', '.' ]
   # [END cloudbuild_lb4_image_yaml]
 
   # [START cloudbuild_lb4_push_yaml]
   # Docker push to Google Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: [ 'push',  'gcr.io/co-corptalentum-gcp/lb4_example:${TAG_NAME:1}' ]
+    args: [ 'push',  'gcr.io/co-corptalentum-gcp/lb4_example:${_MY_TAG}' ]
   # [END cloudbuild_lb4_push_yaml]
+
+substitutions:
+  _MY_TAG: ${TAG_NAME:1}
+options:
+  dynamic_substitutions: true
