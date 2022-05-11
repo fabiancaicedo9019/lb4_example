@@ -9,7 +9,7 @@ steps:
     args:
     - '-c'
     - |
-      version=$TAG_NAME \
+      version=$TAG_NAME
       build -t gcr.io/co-corptalentum-gcp/lb4_example:${version//./-}
   # [END cloudbuild_lb4_image_yaml]
 
