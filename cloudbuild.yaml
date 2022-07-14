@@ -13,6 +13,8 @@ steps:
     args: [ 'push',  'gcr.io/co-corptalentum-gcp/lb4_example:${_MY_TAG}' ]
   # [END cloudbuild_lb4_push_yaml]
 
+
+
 substitutions:
   _MY_TAG: ${TAG_NAME:1}
 options:
