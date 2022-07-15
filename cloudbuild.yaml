@@ -16,6 +16,8 @@ steps:
   - name: "gcr.io/cloud-builders/gcloud"
     args: ['run', 'deploy', 'lb4exampleback', '--image', 'gcr.io/co-corptalentum-gcp/lb4_example:${_MY_TAG}', '--cluster', 'cluster-prod', '--cluster-location', 'us-east1-d', '--namespace', 'example', '--platform', 'gke']
 
+
+
 substitutions:
   _MY_TAG: ${TAG_NAME:1}
 options:
