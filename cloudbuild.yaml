@@ -1,11 +1,5 @@
 # [START cloudbuild_steps]
 steps:
-  # Set env variables for its execution
-  - name: 'ubuntu'
-    args: ['bash', './script.sh']
-    env:
-    - 'REPO_NAME=$REPO_NAME'
-    - 'PROJECT_ID=$PROJECT_ID'
 
   # [START cloudbuild_lb4_image_yaml]
   # Docker Build
