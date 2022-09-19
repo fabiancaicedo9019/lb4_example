@@ -5,24 +5,29 @@ steps:
   # Docker Build
   - name: 'gcr.io/cloud-builders/docker'
     args: [ 'build', '-t', 'gcr.io/co-corptalentum-gcp/lb4_example:${_MY_TAG}', '.' ]
+    id: 'build_tag_repository'
   # [END cloudbuild_lb4_image_yaml]
 
   # [START cloudbuild_lb4_image_yaml]
   # Docker Tag
   - name: 'gcr.io/cloud-builders/docker'
     args: [ 'tag', 'gcr.io/co-corptalentum-gcp/lb4_example:latest', 'gcr.io/co-corptalentum-gcp/lb4_example:${_MY_TAG}' ]
+    id: 'tag_latest'
+    wait_for: ['build_tag_repository']
   # [END cloudbuild_lb4_image_yaml]
 
   # [START cloudbuild_lb4_push_yaml]
   # Docker push to Google Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
     args: [ 'push',  'gcr.io/co-corptalentum-gcp/lb4_example:${_MY_TAG}' ]
+    wait_for: ['build_tag_repository', 'tag_latest']
   # [END cloudbuild_lb4_push_yaml]
 
   # [START cloudbuild_lb4_push_yaml]
   # Docker push to Google Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
     args: [ 'push',  'gcr.io/co-corptalentum-gcp/lb4_example:latest' ]
+    wait_for: ['build_tag_repository', 'tag_latest']
   # [END cloudbuild_lb4_push_yaml]
 
 #  - name: "gcr.io/cloud-builders/gcloud"
