@@ -7,14 +7,26 @@ steps:
     args: [ 'build', '-t', 'gcr.io/co-corptalentum-gcp/lb4_example:${_MY_TAG}', '.' ]
   # [END cloudbuild_lb4_image_yaml]
 
+  # [START cloudbuild_lb4_image_yaml]
+  # Docker Tag
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [ 'build', 'tag', 'gcr.io/co-corptalentum-gcp/lb4_example:latest', 'gcr.io/co-corptalentum-gcp/lb4_example:${_MY_TAG}' ]
+  # [END cloudbuild_lb4_image_yaml]
+
   # [START cloudbuild_lb4_push_yaml]
   # Docker push to Google Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
     args: [ 'push',  'gcr.io/co-corptalentum-gcp/lb4_example:${_MY_TAG}' ]
   # [END cloudbuild_lb4_push_yaml]
 
-  - name: "gcr.io/cloud-builders/gcloud"
-    args: ['run', 'deploy', 'lb4exampleback', '--image', 'gcr.io/co-corptalentum-gcp/lb4_example:${_MY_TAG}', '--cluster', 'cluster-prod', '--cluster-location', 'us-east1-d', '--namespace', 'example', '--platform', 'gke']
+  # [START cloudbuild_lb4_push_yaml]
+  # Docker push to Google Artifact Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [ 'push',  'gcr.io/co-corptalentum-gcp/lb4_example:latest' ]
+  # [END cloudbuild_lb4_push_yaml]
+
+#  - name: "gcr.io/cloud-builders/gcloud"
+#    args: ['run', 'deploy', 'lb4exampleback', '--image', 'gcr.io/co-corptalentum-gcp/lb4_example:${_MY_TAG}', '--cluster', 'cluster-prod', '--cluster-location', 'us-east1-d', '--namespace', 'example', '--platform', 'gke']
 
 substitutions:
   _MY_TAG: ${TAG_NAME:1}
