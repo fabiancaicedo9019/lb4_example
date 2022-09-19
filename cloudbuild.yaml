@@ -13,7 +13,6 @@ steps:
     args: [ 'push',  'gcr.io/co-corptalentum-gcp/lb4_example:${_MY_TAG}' ]
   # [END cloudbuild_lb4_push_yaml]
 
-
   # [START cloudbuild_lb4_image_yaml]
   # Docker Build
   - name: 'gcr.io/cloud-builders/docker'
@@ -24,18 +23,6 @@ steps:
   # Docker push to Google Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
     args: [ 'push',  'gcr.io/co-corptalentum-gcp/lb4_example:latest' ]
-  # [END cloudbuild_lb4_push_yaml]
-
-  # [START cloudbuild_lb4_image_yaml]
-  # Docker Tag
-  # - name: 'gcr.io/cloud-builders/docker'
-  #   args: [ 'build', 'tag', 'gcr.io/co-corptalentum-gcp/lb4_example:latest', 'gcr.io/co-corptalentum-gcp/lb4_example:${_MY_TAG}' ]
-  # [END cloudbuild_lb4_image_yaml]
-
-  # [START cloudbuild_lb4_push_yaml]
-  # Docker push to Google Artifact Registry
-  # - name: 'gcr.io/cloud-builders/docker'
-  #   args: [ 'push',  'gcr.io/co-corptalentum-gcp/lb4_example:latest' ]
   # [END cloudbuild_lb4_push_yaml]
 
 #  - name: "gcr.io/cloud-builders/gcloud"
