@@ -25,8 +25,8 @@ steps:
     args: [ 'push',  'gcr.io/$PROJECT_ID/$REPO_NAME:latest' ]
   # [END cloudbuild_lb4_push_yaml]
 
-#  - name: "gcr.io/cloud-builders/gcloud"
-#    args: ['run', 'deploy', 'lb4exampleback', '--image', 'gcr.io/$PROJECT_ID/$REPO_NAME:${_MY_TAG}', '--cluster', 'cluster-prod', '--cluster-location', 'us-east1-d', '--namespace', 'example', '--platform', 'gke']
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args: ['run', 'deploy', 'lb4exampleback', '--image', 'gcr.io/$PROJECT_ID/$REPO_NAME:${_MY_TAG}', '--cluster', 'cluster-prod', '--cluster-location', 'us-east1-d', '--namespace', 'example', '--platform', 'gke']
 
 substitutions:
   _MY_TAG: ${TAG_NAME:1}
