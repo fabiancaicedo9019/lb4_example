@@ -42,7 +42,7 @@ steps:
     args:
     - 'run'
     - 'deploy'
-    - '$REPO_NAME'
+    - 'lb4-example'
     - '--image'
     - 'gcr.io/$PROJECT_ID/$REPO_NAME:latest'
     - '--cluster'
