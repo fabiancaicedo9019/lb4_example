@@ -52,7 +52,7 @@ steps:
     - '--cluster-location'
     - 'us-east1-d'
     - '--platform'
-    - 'gke
+    - 'gke'
 
 images:
   - gcr.io/$PROJECT_ID/$REPO_NAME:latest
