@@ -32,12 +32,30 @@ steps:
 #https://stackoverflow.com/questions/61944660/env-step-parameter-in-cloudbuild-yaml-file-not-settings-environment-variable
 
 # Deploy container image to Cloud Run for Anthos
-  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    entrypoint: gcloud
-    args: ['run', 'deploy', 'lb4exampleback', '--image', 'gcr.io/$PROJECT_ID/$REPO_NAME:latest', '--cluster', 'cluster-prod', '--cluster-location', 'us-east1-d', '--platform', 'gke']
+  # - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  #   entrypoint: gcloud
+  #   args: ['run', 'deploy', 'lb4exampleback', '--image', 'gcr.io/$PROJECT_ID/$REPO_NAME:latest', '--cluster', 'cluster-prod', '--cluster-location', 'us-east1-d', '--platform', 'gke', '--namespace', 'example']
+
+# Deploy container image to Cloud Run for Anthos
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: gcloud
+  args:
+  - 'run'
+  - 'deploy'
+  - '$REPO_NAME'
+  - '--image'
+  - 'gcr.io/$PROJECT_ID/$REPO_NAME:latest'
+  - '--cluster'
+  - 'cluster-prod'
+  - '--cluster-location'
+  - 'us-east1-d'
+  - '--platform'
+  - 'gke'
+  - '--namespace'
+  - 'example'
+
 images:
   - gcr.io/$PROJECT_ID/$REPO_NAME:latest
-
 
 substitutions:
   _MY_TAG: ${TAG_NAME:1}
