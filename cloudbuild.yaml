@@ -53,6 +53,7 @@ steps:
     - 'us-east1-d'
     - '--platform'
     - 'gke'
+    - '--set-env-vars=KEY1=VALUE1'
 
 images:
   - gcr.io/$PROJECT_ID/$REPO_NAME:latest
