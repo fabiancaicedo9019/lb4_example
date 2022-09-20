@@ -43,6 +43,8 @@ steps:
     - 'run'
     - 'deploy'
     - 'lb4-example'
+    - '--namespace'
+    - 'example'
     - '--image'
     - 'gcr.io/$PROJECT_ID/$REPO_NAME:latest'
     - '--cluster'
@@ -50,9 +52,7 @@ steps:
     - '--cluster-location'
     - 'us-east1-d'
     - '--platform'
-    - 'gke'
-    - '--namespace'
-    - 'example'
+    - 'gke
 
 images:
   - gcr.io/$PROJECT_ID/$REPO_NAME:latest
