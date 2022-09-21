@@ -49,7 +49,7 @@ steps:
     - '--max-instances'
     - '1'
     - '--update-config-maps'
-    - 'hola=temporal,var=example'
+    - 'hola=temporal'
     - '--image'
     - 'gcr.io/$PROJECT_ID/$REPO_NAME:latest'
     - '--cluster'
