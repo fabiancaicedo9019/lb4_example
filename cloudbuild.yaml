@@ -38,9 +38,9 @@ steps:
 
 # Deploy container image to Cloud Run for Anthos
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    entrypoint: gcloud
+    entrypoint: gcloud beta
     args:
-    - 'beta run'
+    - 'run'
     - 'deploy'
     - 'lb4-example'
     - '--namespace'
