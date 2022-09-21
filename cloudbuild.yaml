@@ -48,7 +48,7 @@ steps:
     - 'example'
     - '--max-instances'
     - '1'
-    - '--set-config-maps'
+    - '--update-config-maps'
     - 'hola=temporal,var=example'
     - '--image'
     - 'gcr.io/$PROJECT_ID/$REPO_NAME:latest'
